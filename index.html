@@ -2,9 +2,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+    <title>My Map</title>
 
     <script>
+      // Api key to access map data
       var esriConfig = {
         apiKey: "AAPT85fOqywZsicJupSmVSCGrg_oXtVutYoYPKlrfhW1PIMfbEcJuQnkiWsMOjBgkeg1WWen22NtTx7oH44ykS1PSYw6adlYTIQwM2IjOZBWEjedlu5cL_e5eYkTxC2-8DhCzHaMAla645G4vTMKkdp_-E12D-EwiXq0UOlJhW7_pOv_4HtcOcUdDmYggXNZdxnzkFurcks9vq0tILNRKWUoZlBOib587h3364A5epK2TvM.AT2_3CVEZ04r"
       };
@@ -28,6 +29,7 @@
   </head>
 
   <body>
+    <!-- Container to hold all buttons that are accessed by script to attach functions that activate filter upon click -->
     <div id="buttons">
       <div id="all-btn" class="view-button">View All</div>
       <div id="golf-btn" class="view-button">Golf Courses</div>
@@ -36,7 +38,7 @@
       <div id="colleges-btn" class="view-button">Colleges</div>
     </div>
 
-    <!-- Correct container ID -->
+    <!-- Container to hold map -->
     <div id="viewDiv" style="height: 100%; width: 100%;"></div>
 
     <script>
@@ -55,15 +57,14 @@
 
         // Create a new MapView
         const view = new MapView({
-          container: "viewDiv",  // Correct container ID
+          container: "viewDiv",
           map: map,
-          center: [-111.8937, 40.6492],  // Initial center (longitude, latitude)
+          // starting point of map, where map with load first
+          center: [-111.8937, 40.6492], 
           zoom: 10
         });
 
-        
-
-        // Create a graphics layer and add it to the map
+        // Create a graphics layer, add to the already created map
         const graphicsLayer = new GraphicsLayer();
         map.add(graphicsLayer);
 
@@ -79,11 +80,11 @@
           geometry: point,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",
+            size: "12px",
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff", 
+              width: "2px" 
             }
           },
           attributes: {
@@ -107,11 +108,11 @@
           geometry: point2,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000", 
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"
             }
           },
           attributes: {
@@ -135,11 +136,11 @@
           geometry: point3,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000", 
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -163,11 +164,11 @@
           geometry: point4,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000", 
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -192,11 +193,11 @@
           geometry: point5,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px" 
             }
           },
           attributes: {
@@ -221,11 +222,11 @@
           geometry: point6,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff", 
+              width: "2px"  
             }
           },
           attributes: {
@@ -250,11 +251,11 @@
           geometry: point7,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -279,11 +280,11 @@
           geometry: point8,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -308,11 +309,11 @@
           geometry: point9,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -336,11 +337,11 @@
           geometry: point10,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000", 
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -364,11 +365,11 @@
           geometry: point11,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -393,11 +394,11 @@
           geometry: point12,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -421,11 +422,11 @@
           geometry: point13,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -449,11 +450,11 @@
           geometry: point14,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -477,11 +478,11 @@
           geometry: point15,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -505,11 +506,11 @@
           geometry: point16,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -534,11 +535,11 @@
           geometry: point17,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -562,11 +563,11 @@
           geometry: point18,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -590,11 +591,11 @@
           geometry: point19,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px",  
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px"  
             }
           },
           attributes: {
@@ -618,11 +619,11 @@
           geometry: point20,
           symbol: {
             type: "simple-marker",
-            color: "#000000",  // Marker color (black)
-            size: "12px",  // Marker size
+            color: "#000000",  
+            size: "12px", 
             outline: {
-              color: "#ffffff",  // Outline color (white)
-              width: "2px"  // Outline width
+              color: "#ffffff",  
+              width: "2px" 
             }
           },
           attributes: {
@@ -635,6 +636,7 @@
           }
         });
 
+        // Select all of the filter buttons by their id
         const allBtn = document.getElementById("all-btn")
         const golfBtn = document.getElementById("golf-btn")
         const climbBtn = document.getElementById("climb-btn")
@@ -643,7 +645,7 @@
 
         
 
-        // Add the graphic to the graphics layer
+        // Add all the graphics to the graphics layer, after removing any others that were there before
         
         function listAll() {
           graphicsLayer.removeAll()
@@ -668,6 +670,7 @@
           graphicsLayer.add(point19g);
           graphicsLayer.add(point20g);
         }
+         // Add all the golf graphics to the graphics layer, after removing any others that were there before
 
         function listGolf() {
           graphicsLayer.removeAll()
@@ -682,13 +685,14 @@
           graphicsLayer.add(point9g);
           
         }
-
+         // Add all the climbing graphics to the graphics layer, after removing any others that were there before
         function listClimbing() {
           graphicsLayer.removeAll()
           graphicsLayer.add(point10g);
           graphicsLayer.add(point11g);
           
         }
+         // Add all the hostpital graphics to the graphics layer, after removing any others that were there before
 
         function listHospitals() {
           graphicsLayer.removeAll()
@@ -699,6 +703,7 @@
           graphicsLayer.add(point16g);
         }
 
+         // Add all the college graphics to the graphics layer, after removing any others that were there before
         function listColleges() {
           graphicsLayer.removeAll()
           graphicsLayer.add(point17g);
@@ -707,7 +712,7 @@
           graphicsLayer.add(point20g);
         }
 
-        
+        // Add event listeners to all of the buttons, the functions correspond to the filter they should activate
         allBtn.addEventListener('click', function() {
           listAll()
         });
@@ -733,7 +738,7 @@
 
 
          
-
+// Call the function to load all graphics upon load
         listAll()
 
         
