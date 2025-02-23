@@ -1,0 +1,745 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+
+    <script>
+      var esriConfig = {
+        apiKey: "AAPT85fOqywZsicJupSmVSCGrg_oXtVutYoYPKlrfhW1PIMfbEcJuQnkiWsMOjBgkeg1WWen22NtTx7oH44ykS1PSYw6adlYTIQwM2IjOZBWEjedlu5cL_e5eYkTxC2-8DhCzHaMAla645G4vTMKkdp_-E12D-EwiXq0UOlJhW7_pOv_4HtcOcUdDmYggXNZdxnzkFurcks9vq0tILNRKWUoZlBOib587h3364A5epK2TvM.AT2_3CVEZ04r"
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Load Calcite components from CDN -->
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.31/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.31/"></script>
+
+    <!-- Load Map components from CDN-->
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.31/arcgis-map-components.esm.js"
+    ></script>
+
+  </head>
+
+  <body>
+    <div id="buttons">
+      <div id="all-btn" class="view-button">View All</div>
+      <div id="golf-btn" class="view-button">Golf Courses</div>
+      <div id="climb-btn" class="view-button">Climbing Gyms</div>
+      <div id="hospital-btn" class="view-button">Hospitals</div>
+      <div id="colleges-btn" class="view-button">Colleges</div>
+    </div>
+
+    <!-- Correct container ID -->
+    <div id="viewDiv" style="height: 100%; width: 100%;"></div>
+
+    <script>
+      require([
+        "esri/Graphic", 
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/geometry/Point",
+        "esri/layers/GraphicsLayer"
+      ], function (Graphic, Map, MapView, Point, GraphicsLayer) {
+
+        // Create a new map
+        const map = new Map({
+          basemap: "arcgis/navigation"
+        });
+
+        // Create a new MapView
+        const view = new MapView({
+          container: "viewDiv",  // Correct container ID
+          map: map,
+          center: [-111.8937, 40.6492],  // Initial center (longitude, latitude)
+          zoom: 10
+        });
+
+        
+
+        // Create a graphics layer and add it to the map
+        const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+
+        // Create a point graphic
+        const point = new Point({
+          longitude: -111.928811,
+          latitude: 40.667264
+        });
+        
+
+        // Define the graphic symbol and popup template
+        const point1 = new Graphic({
+          geometry: point,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Fore Lakes Golf Course",
+            Place_addr: "1285 W 4700 S, Taylorsville, UT 84123"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point2 = new Point({
+          longitude: -111.87947,
+          latitude: 40.66099
+        });
+
+        // Define the graphic symbol and popup template
+        const point2g = new Graphic({
+          geometry: point2,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Mick Riley Golf Course",
+            Place_addr: "421 Vine St, Murray, UT 84107"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+         // Create a point graphic
+         const point3 = new Point({
+          longitude: -111.916764,
+          latitude: 40.635850
+        });
+
+        // Define the graphic symbol and popup template
+        const point3g = new Graphic({
+          geometry: point3,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Murray Parkway Golf Course",
+            Place_addr: "6345 Murray Pkwy Ave, Murray, UT 84123"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point4 = new Point({
+          longitude: -111.927400,
+          latitude: 40.681165
+        });
+
+        // Define the graphic symbol and popup template
+        const point4g = new Graphic({
+          geometry: point4,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Meadow Brook Golf Course",
+            Place_addr: "4197 1300 W, Taylorsville, UT 84123"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point5 = new Point({
+          longitude: -111.912060,
+          latitude: 40.701402
+        });
+
+
+        // Define the graphic symbol and popup template
+        const point5g = new Graphic({
+          geometry: point5,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Central Valley Golf Course",
+            Place_addr: "4197 1300 W, Taylorsville, UT 84123"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point6 = new Point({
+          longitude: -111.9977157,
+          latitude: 40.713998
+        });
+
+
+        // Define the graphic symbol and popup template
+        const point6g = new Graphic({
+          geometry: point6,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Stonebridge Golf Club",
+            Place_addr: "4415 Links Dr, West Valley City, UT 84120"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point7 = new Point({
+          longitude: -111.93429965897393,
+          latitude: 40.72848839122635
+        });
+
+
+        // Define the graphic symbol and popup template
+        const point7g = new Graphic({
+          geometry: point7,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Glendale Golf Course",
+            Place_addr: "1630 W 2100 S, Salt Lake City, UT 84119"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point8 = new Point({
+          longitude: -111.87417618188202,
+          latitude: 40.71134180148624
+        });
+
+
+        // Define the graphic symbol and popup template
+        const point8g = new Graphic({
+          geometry: point8,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Nibley Park Golf Course",
+            Place_addr: "2780 S 700 E, Salt Lake City, UT 84106"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point9 = new Point({
+          longitude: -111.86210457760967,
+          latitude: 40.717909221241634
+        });
+
+
+        // Define the graphic symbol and popup template
+        const point9g = new Graphic({
+          geometry: point9,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Forest Dale Golf Course",
+            Place_addr: "2375 S 900 E, Salt Lake City, UT 84106"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point10 = new Point({
+          longitude: -111.891292,
+          latitude: 40.681576
+        });
+
+        // Define the graphic symbol and popup template
+        const point10g = new Graphic({
+          geometry: point10,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "The Front Climbing Club - South Main",
+            Place_addr: "4140 S Main St, Millcreek, UT 84107"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point11 = new Point({
+          longitude: -111.80314441579728,
+          latitude: 40.70115591986655
+        });
+
+        // Define the graphic symbol and popup template
+        const point11g = new Graphic({
+          geometry: point11,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Momentum Indoor Climbing Millcreek",
+            Place_addr: "3173 E 3300 S, Salt Lake City, UT 84109"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point12 = new Point({
+          longitude: -111.85701645879223,
+          latitude: 40.68633059152027
+        });
+        
+
+        // Define the graphic symbol and popup template
+        const point12g = new Graphic({
+          geometry: point12,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "St. Mark's Hospital",
+            Place_addr: "1200 E 3900 S, Millcreek, UT 84124"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+         // Create a point graphic
+         const point13 = new Point({
+          longitude: -111.89185223592935,
+          latitude: 40.659294756279
+        });
+
+        // Define the graphic symbol and popup template
+        const point13g = new Graphic({
+          geometry: point13,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Intermountain Medical Center",
+            Place_addr: "5121 Cottonwood St, Murray, UT 84107"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+         // Create a point graphic
+         const point14 = new Point({
+          longitude: -112.026506,
+          latitude: 40.704281
+        });
+
+        // Define the graphic symbol and popup template
+        const point14g = new Graphic({
+          geometry: point14,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "West Valley Emergency",
+            Place_addr: "5668 W 3100 S, West Valley City, UT 84128"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+         // Create a point graphic
+         const point15 = new Point({
+          longitude: -111.990408,
+          latitude: 40.69729
+        });
+
+        // Define the graphic symbol and popup template
+        const point15g = new Graphic({
+          geometry: point15,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Jordan Valley Medical Center",
+            Place_addr: "3460 S 4155 W, West Valley City, UT 84120"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point16 = new Point({
+          longitude: -111.89268452154703,
+          latitude: 40.679744621610084
+        });
+
+        // Define the graphic symbol and popup template
+        const point16g = new Graphic({
+          geometry: point16,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "KPC Promise of Salt Lake",
+            Place_addr: "98 Tytus Drive, Murray, UT 84107, United States of America"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+        
+
+         // Create a point graphic
+         const point17 = new Point({
+          longitude: -111.942407326952,
+          latitude: 40.671537715716326
+        });
+
+        // Define the graphic symbol and popup template
+        const point17g = new Graphic({
+          geometry: point17,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Salt Lake Community College",
+            Place_addr: "4600 S Redwood Rd, Salt Lake City, UT 84123"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point18 = new Point({
+          longitude: -111.8550,
+          latitude: 40.7322
+        });
+
+        // Define the graphic symbol and popup template
+        const point18g = new Graphic({
+          geometry: point18,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Westminster University",
+            Place_addr: "1840 S 1300 E, Salt Lake City, UT 84105"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point19 = new Point({
+          longitude: -111.9002,
+          latitude: 40.7712
+        });
+
+        // Define the graphic symbol and popup template
+        const point19g = new Graphic({
+          geometry: point19,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "Ensign College",
+            Place_addr: "95 N 300 W, Salt Lake City, UT 84101"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        // Create a point graphic
+        const point20 = new Point({
+          longitude: -111.8421,
+          latitude: 40.7649
+        });
+
+        // Define the graphic symbol and popup template
+        const point20g = new Graphic({
+          geometry: point20,
+          symbol: {
+            type: "simple-marker",
+            color: "#000000",  // Marker color (black)
+            size: "12px",  // Marker size
+            outline: {
+              color: "#ffffff",  // Outline color (white)
+              width: "2px"  // Outline width
+            }
+          },
+          attributes: {
+            PlaceName: "The University of Utah",
+            Place_addr: "201 Presidents' Cir, Salt Lake City, UT 84112"
+          },
+          popupTemplate: {
+            title: "{PlaceName}",
+            content: "{Place_addr}"
+          }
+        });
+
+        const allBtn = document.getElementById("all-btn")
+        const golfBtn = document.getElementById("golf-btn")
+        const climbBtn = document.getElementById("climb-btn")
+        const hospitalBtn = document.getElementById("hospital-btn")
+        const collegeBtn = document.getElementById("colleges-btn")
+
+        
+
+        // Add the graphic to the graphics layer
+        
+        function listAll() {
+          graphicsLayer.removeAll()
+          graphicsLayer.add(point1);
+          graphicsLayer.add(point2g);
+          graphicsLayer.add(point3g);
+          graphicsLayer.add(point4g);
+          graphicsLayer.add(point5g);
+          graphicsLayer.add(point6g);
+          graphicsLayer.add(point7g);
+          graphicsLayer.add(point8g);
+          graphicsLayer.add(point9g);
+          graphicsLayer.add(point10g);
+          graphicsLayer.add(point11g);
+          graphicsLayer.add(point12g);
+          graphicsLayer.add(point13g);
+          graphicsLayer.add(point14g);
+          graphicsLayer.add(point15g);
+          graphicsLayer.add(point16g);
+          graphicsLayer.add(point17g);
+          graphicsLayer.add(point18g);
+          graphicsLayer.add(point19g);
+          graphicsLayer.add(point20g);
+        }
+
+        function listGolf() {
+          graphicsLayer.removeAll()
+          graphicsLayer.add(point1);
+          graphicsLayer.add(point2g);
+          graphicsLayer.add(point3g);
+          graphicsLayer.add(point4g);
+          graphicsLayer.add(point5g);
+          graphicsLayer.add(point6g);
+          graphicsLayer.add(point7g);
+          graphicsLayer.add(point8g);
+          graphicsLayer.add(point9g);
+          
+        }
+
+        function listClimbing() {
+          graphicsLayer.removeAll()
+          graphicsLayer.add(point10g);
+          graphicsLayer.add(point11g);
+          
+        }
+
+        function listHospitals() {
+          graphicsLayer.removeAll()
+          graphicsLayer.add(point12g);
+          graphicsLayer.add(point13g);
+          graphicsLayer.add(point14g);
+          graphicsLayer.add(point15g);
+          graphicsLayer.add(point16g);
+        }
+
+        function listColleges() {
+          graphicsLayer.removeAll()
+          graphicsLayer.add(point17g);
+          graphicsLayer.add(point18g);
+          graphicsLayer.add(point19g);
+          graphicsLayer.add(point20g);
+        }
+
+        
+        allBtn.addEventListener('click', function() {
+          listAll()
+        });
+
+        golfBtn.addEventListener('click', function() {
+          listGolf()
+        });
+
+
+        climbBtn.addEventListener('click', function() {
+          listClimbing()
+        });
+
+
+        hospitalBtn.addEventListener('click', function() {
+          listHospitals()
+        });
+
+
+        collegeBtn.addEventListener('click', function() {
+          listColleges()
+        });
+
+
+         
+
+        listAll()
+
+        
+      });
+      listAll()
+    </script>
+
+  </body>
+</html>
